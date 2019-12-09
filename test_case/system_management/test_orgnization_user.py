@@ -1,7 +1,7 @@
 import requests
 import pytest
 import json
-from network_resource.conftest import read_excel, read_excel_tuple
+from common.get_excel import read_excel, read_excel_tuple
 from common.get_excel_data import OperationExcleData
 
 # 创建2个组织，在组织1下创建用户1，在组织2下添加已有用户，移除用户，在组织1下删除用户，编辑组织，删除组织

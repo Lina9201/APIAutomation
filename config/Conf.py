@@ -44,7 +44,8 @@ class ConfigYaml:
     def __init__(self):
         self.config = YamlReader((get_config_file())).yamldata()
 
-    # 定义方法获取需要信息
-    def get_conf_url(self):
-        return self.config["BASE"]["test"]["url"]
+
+    def get_db_config(self, db_alias):
+        return self.config[db_alias]
+
 

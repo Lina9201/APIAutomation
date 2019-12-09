@@ -16,11 +16,11 @@ createDataCenter_url = "/admin/v1/regions"
 
 # 获取创建数据中心请求参数数据
 testdata_path = Conf.get_testdata_path()
-excelFile = testdata_path + os.sep + "资源池.xlsx"
+excelFile = testdata_path + os.sep + "物理资源.xlsx"
 sheetName = "添加数据中心"
 datacenter_data = OperationExcleData(excelFile, sheetName).getCaseList()
 
-@pytest.mark.smoke
+@pytest.mark.run(order=1)
 @pytest.mark.parametrize("datacenter_data", datacenter_data)
 def test_create_datacenter(uri, headers, datacenter_data):
     """
@@ -64,7 +64,7 @@ def get_datacenter(uri, headers):
 if __name__ == '__main__':
     report_raw_path = "../../report/allure_raw"
     testdata_path = Conf.get_testdata_path()
-    excelFile = testdata_path + "资源池.xlsx"
+    excelFile = testdata_path + "物理资源.xlsx"
     print(excelFile)
 
 

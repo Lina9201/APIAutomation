@@ -2,6 +2,8 @@
 # @Time    : 2019/10/14 10:47
 # @Author  : zhuxuefei
 
+import json
+
 class AssertUtil:
     def assert_code(self, code, expected_code):
         """
@@ -38,7 +40,8 @@ class AssertUtil:
         :return:
         """
         try:
-            assert body in excepted_body
+            body = json.dumps(body)
+            assert excepted_body in body
         except:
             print("body in error")
             raise

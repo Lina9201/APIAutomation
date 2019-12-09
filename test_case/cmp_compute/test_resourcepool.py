@@ -4,18 +4,18 @@ import json
 import os
 from config import Conf
 from common.get_excel_data import OperationExcleData
-from test_case.cmp_compute.test_01datacenter import get_datacenterid
+from test_case.cmp_compute.test_datacenter import get_datacenterid
 
 # 添加资源池请求url
 createResourcePool_url = "/admin/v1/resourcepools"
 
 testdata_path = Conf.get_testdata_path()
-excelFile = testdata_path + os.sep + "资源池.xlsx"
+excelFile = testdata_path + os.sep + "物理资源.xlsx"
 sheetName = "添加资源池"
 resourcepool_data = OperationExcleData(excelFile, sheetName).getcase_tuple()
 
 
-@pytest.mark.smoke
+@pytest.mark.run(order=2)
 @pytest.mark.parametrize("ID,testcases,regionname,name,type,descrption,rpip,rpport,proxyIp,proxyPort,username,password,datacenter,domain,projectId,protocol,region,version", resourcepool_data)
 def test_createResourcePool(uri, headers,ID,testcases, regionname,name,type,descrption,rpip,rpport,proxyIp,proxyPort,username,password,datacenter,domain,projectId,protocol,region,version):
     """

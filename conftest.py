@@ -6,15 +6,15 @@ authentication_url_path = "/v1/tokens"
 json_login = {
     "authType": "password",
     "params": {
-        "username": "shenfeifei",
-        "password": "Q+1Al2vwhFS9P0qpfg30cQ=="
+        "username": "zhon",
+        "password": "jixlb2tIrjF5t/bYQTXz4Q=="
     }
 }
 
 
 def pytest_addoption(parser):
-    parser.addoption("--ip", action="store", default="172.50.10.42", help="please input target VM ip.")
-    parser.addoption("--port", action="store", default="8000", help="please input target service port.")
+    parser.addoption("--ip", action="store", default="172.23.1.2", help="please input target VM ip.")
+    parser.addoption("--port", action="store", default="api", help="please input target service port.")
 
 
 @pytest.fixture(scope="session")
@@ -29,7 +29,7 @@ def port(request):
 
 @pytest.fixture(scope="session")
 def uri(ip,port):
-    uri = "http://%s:%s" % (ip, port)
+    uri = "http://%s/%s" % (ip, port)
     return uri
 
 
@@ -70,3 +70,5 @@ def headers(uri):
                "content-type": "application/json;charset=UTF-8",
                "T-AUTH-TOKEN": auth_token}
     return headers
+
+
